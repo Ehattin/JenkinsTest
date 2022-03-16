@@ -9,9 +9,9 @@ node {
             git url: repoUrl
         }
 
-        stage('git command') {
+        stage('git branch name') {
         echo 'Executing a git command (committed changes):'
-        commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
+        echo " $branchName "
 
         }
 
@@ -20,7 +20,7 @@ node {
         echo 'Here is a message Directly from our Jenkinsfile'
         }
 
-        stage('Run') {
+        stage('Run Script') {
 
         echo 'Running python script:'
 
