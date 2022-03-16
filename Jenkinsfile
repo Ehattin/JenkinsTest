@@ -1,9 +1,7 @@
 String branchName = env.BRANCH_NAME
 String repoUrl = "https://github.com/Ehattin/JenkinsTest.git"
 
-pipeline {
-    
-    node {
+node {
 
         stage('Clone') {
             // Clones the repository
@@ -13,7 +11,7 @@ pipeline {
 
         stage('git command') {
         echo 'Executing a git command (pull):'
-        
+
 
         }
 
@@ -30,5 +28,4 @@ pipeline {
         }
 
 
-    }
 }
