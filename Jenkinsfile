@@ -10,8 +10,8 @@ node {
         }
 
         stage('git command') {
-        echo 'Executing a git command (pull):'
-
+        echo 'Executing a git command (committed changes):'
+        commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
 
         }
 
