@@ -1,18 +1,38 @@
+String branchName = env.BRANCH_NAME
+String repoUrl = "https://github.com/Ehattin/JenkinsTest.git"
+
 pipeline {
     
     node {
 
-        stage('Build') {
+        stage('Clone') {
+            // Clones the repository from the current branch name
+            echo 'Make the output directory'
+            sh 'mkdir -p build'
 
-        echo 'building application'
+            echo 'Cloning files from (branch: "' + branchName + '" )'
+            dir('build') {
+                git branch: branchName, url: repoUrl
         }
-        stage('Test') {
 
-        echo 'testing application'
-        }
-        stage('Deploy') {
+        stage('git command') {
+        echo 'Executing a git command (pull):'
 
-        echo 'deploying application'
+
         }
+
+        stage('Message') {
+
+        echo 'Here is a console message'
+        }
+
+        stage('Run') {
+
+        echo 'Running python script:'
+
+
+        }
+
+
     }
 }
