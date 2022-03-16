@@ -17,7 +17,7 @@ node {
 
         stage('Message') {
 
-        echo 'Here is a console message'
+        echo 'Here is a message Directly from our Jenkinsfile'
         }
 
         stage('Run') {
