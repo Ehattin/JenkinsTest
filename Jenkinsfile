@@ -6,18 +6,14 @@ pipeline {
     node {
 
         stage('Clone') {
-            // Clones the repository from the current branch name
-            echo 'Make the output directory'
-            sh 'mkdir -p build'
-
+            // Clones the repository
             echo 'Cloning files from (branch: "' + branchName + '" )'
-            dir('build') {
-                git branch: branchName, url: repoUrl
+            git url: repoUrl
         }
 
         stage('git command') {
         echo 'Executing a git command (pull):'
-
+        
 
         }
 
