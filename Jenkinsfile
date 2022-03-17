@@ -1,6 +1,5 @@
 String branchName = env.BRANCH_NAME
 String repoUrl = "https://github.com/Ehattin/JenkinsTest.git"
-
 node {
 
         stage('Clone') {
@@ -9,22 +8,29 @@ node {
             git url: repoUrl
         }
 
-        stage('git branch name') {
-        echo 'Executing a git command (committed changes):'
-        echo " $branchName "
+        stage('git command') {
+        echo 'Executing a git command:'
+        targetDir = workspace
+        echo targetDir
+        
 
         }
 
         stage('Message') {
 
-        echo 'Here is a message Directly from our Jenkinsfile'
+        echo 'Here is a message directly from Jenkins :) '
         }
 
-        stage('Run Script') {
-
-        echo 'Running python script:'
-
-
+        stage('Run') {
+        echo 'Running a script:'
+           script {
+               def data = new Date()
+               println(data)
+               bat 'wmic computersystem get name'
+           }
+            echo 'Running the PythonTest File'
+            bat 'python --version'
+            bat 'python JenkinsTest.py'
         }
 
 
