@@ -9,9 +9,8 @@ node {
         }
 
         stage('git command') {
-        echo 'Executing a git command:'
-        targetDir = workspace
-        echo targetDir
+        echo 'Executing a git command (committed changes):'
+        commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
         
 
         }
