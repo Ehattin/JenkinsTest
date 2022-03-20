@@ -9,10 +9,10 @@ node {
         }
 
         stage('git command') {
-        echo 'Executing a git command (committed changes):'
-        commitChangeset = sh(returnStdout: true, script: 'git diff-tree --no-commit-id --name-status -r HEAD').trim()
-        
-
+        echo 'Executing a git command:'
+        targetDir = workspace
+        echo targetDir
+        resolveScm source: [$class: 'GitSCMSource', credentialsId: '', id: '_', remote: 'https://github.com/Ehattin/JenkinsTest', traits: [gitBranchDiscovery()]], targets: ['second']
         }
 
         stage('Message') {
@@ -26,10 +26,11 @@ node {
                def data = new Date()
                println(data)
                bat 'wmic computersystem get name'
-           }
+            
             echo 'Running the PythonTest File'
             bat 'python --version'
             bat 'python JenkinsTest.py'
+           }
         }
 
 
