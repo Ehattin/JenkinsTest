@@ -1,5 +1,5 @@
 String branchName = env.BRANCH_NAME
-String repoUrl = "https://github.com/Ehattin/JenkinsTest.git"
+String repoUrl = 'https://github.com/Ehattin/JenkinsTest.git'
 node {
 
         stage('Clone') {
@@ -12,7 +12,7 @@ node {
         echo 'Executing a git command:'
         targetDir = workspace
         echo targetDir
-        resolveScm source: [$class: 'GitSCMSource', credentialsId: '', id: '_', remote: 'https://github.com/Ehattin/JenkinsTest', traits: [gitBranchDiscovery()]], targets: ['second']
+        resolveScm source: [$class: 'GitSCMSource', credentialsId: '', id: '_', remote: repoUrl, traits: [gitBranchDiscovery()]], targets: ['second']
         }
 
         stage('Message') {
@@ -23,13 +23,12 @@ node {
         stage('Run') {
         echo 'Running a script:'
            script {
-               def data = new Date()
-               println(data)
-               bat 'wmic computersystem get name'
-            
-            echo 'Running the PythonTest File'
-            bat 'python --version'
-            bat 'python JenkinsTest.py'
+                def data = new Date()
+                println(data)
+                bat 'wmic computersystem get name'
+				echo 'Running the PythonTest File'
+				bat 'python --version'
+				bat 'python JenkinsTest.py'
            }
         }
 
